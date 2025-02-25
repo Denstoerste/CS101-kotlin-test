@@ -2,16 +2,38 @@ package com.example.cs101_test.exercises
 
 object Part4InheritanceAndAccessModification {
     // ---------------------- EXERCISE 1
-    // Create a base/open class called Appliance with 3 properties: brand, powerConsumption, and isOn
-    // Add a method: turnOn() that sets isOn to true
-    // Add another method: turnOff() that sets isOn to false
-    // Override the toString method such that if an appliance object is printed, it will return a string in the following format:
-    //      [brand=brandValue, powerConsumption=powerConsumptionValue, isOn=isOnValue]
-    // Create 2 classes (WashingMachine and Refrigerator) that extend the Appliance class
-    //      and add a method to show/print their unique features e.g. has a quick wash feature (showFeatures).
-    //      The showFeatures method must print something and not be blank, but you can choose what you want it to print!
+    open class Appliance(val brand: String, val powerConsumption: Double, var isOn: Boolean = false) {
 
 
+        fun turnOn() {
+            isOn = true
+        }
+
+
+        fun turnOff() {
+            isOn = false
+        }
+
+
+        override fun toString(): String {
+            return "[brand=$brand, powerConsumption=$powerConsumption, isOn=$isOn]"
+        }
+    }
+
+    class WashingMachine(brand: String, powerConsumption: Double) : Appliance(brand, powerConsumption) {
+
+
+        fun showFeatures() {
+            println("$brand Washing Machine has a quick wash feature!")
+        }
+    }
+    class Refrigerator(brand: String, powerConsumption: Double) : Appliance(brand, powerConsumption) {
+
+        fun showFeatures() {
+            println("$brand Refrigerator has an ice maker feature!")
+        }
+    }
+// lavet sammen med deepseek for forståelse og opsætning (for forstår det ikke helt)
     // ---------------------- EXERCISE 2
     // Create a base class called Employee with properties: name, position, and salary
     // Derive three classes Manager, Developer, and Intern from Employee

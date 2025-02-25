@@ -5,13 +5,19 @@ object Part2ConditionalLogic {
     // Create a function that takes an integer as a parameter and returns "Positive", "Negative", or "Zero".
     fun checkNumber(number: Int): String {
         // Your code here
-        return ""
+        return when {
+            number > 0 -> "Positive"
+            number < 0 -> "Negative"
+            else -> "Zero"
+        }
     }
 
     // ---------------------- EXERCISE 2
     // Create a function that takes a string and prints each character on a new line.
     fun printChars(input: String) {
-        // Your code here
+        for (char in input) {
+            println(char)
+        }
     }
 
     // ---------------------- EXERCISE 3
@@ -19,22 +25,23 @@ object Part2ConditionalLogic {
     // For example if input is 45 then output should be 9 (4+5)
     fun sumDigits(number: Int): Int {
         // Your code here
-        return 0
+        return number.toString().sumOf { it.toString().toInt() }
     }
+    // I samarbejde med deepseek
 
     // ---------------------- EXERCISE 4
     // Create a function that takes a list of integers and returns a new list with only the odd numbers.
     // For example if input is (1,2,3,4,5) then output should be (1,3,5)
     fun filterOddNumbers(numbers: List<Int>): List<Int> {
         // Your code here
-        return listOf()
+        return numbers.filter { it % 2 != 0}
     }
 
     // ---------------------- EXERCISE 5
     // Create a function that takes a list of strings and returns a new list with all strings in lowercase.
     fun transformToLowercase(strings: List<String>): List<String> {
         // Your code here
-        return listOf()
+        return strings.map { it.lowercase()}
     }
 
     // ---------------------- EXERCISE 6
@@ -42,7 +49,13 @@ object Part2ConditionalLogic {
     // Expected output: "1", "2", "4", "5", "7", "8", "10"
     fun printNumbersSkipMultiplesOf3() {
         // Your code here
+        for (i  in 1..10) {
+            if ( i % 3 != 0){
+                println(i)
+            }
+        }
     }
+    // i samarbejde med Chatgpt og forståelse fra et reddit forum
 
     // ---------------------- EXERCISE 7
     // Create a function that takes a string and returns true if it is a palindrome, false otherwise.
@@ -52,6 +65,7 @@ object Part2ConditionalLogic {
         // Your code here
         return false
     }
+    // Forstår ikke
 
     // ---------------------- EXERCISE 8
     // Modify the function to have default values for both width and height and to return the area of the rectangle.
@@ -60,14 +74,18 @@ object Part2ConditionalLogic {
         // Your code here
         return 0
     }
-
+// forstår heller ikke
     // ---------------------- EXERCISE 9
     // Create a function that takes a day of the week as a string and returns "Weekday" or "Weekend".
     // Make sure it handles both uppercase and lowercase letters.
     // Acceptable days: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
     // If the day does not exist, return "Invalid day".
     fun dayType(day: String): String {
-        return ""
+        return when (day.lowercase()){
+            "monday", "tuesday", "wednesday", "thursday", "friday" -> "weekday"
+            "saturday", "sunday" -> "weekend"
+            else -> "Not valid"
+        }
     }
 
     // ---------------------- EXERCISE 10
@@ -77,8 +95,9 @@ object Part2ConditionalLogic {
     //      If dividing the year by 100 result in a whole number, it must also result in a whole number when dividing by 400
     // Examples: 2024 is a leap year, and 2023 is not
     fun isLeapYear(year: Int): Boolean {
-        return false
+        return (year % 4 == 0 && year % 100 != 0) || (year % 400 ==0)
     }
+    // i samarbejde med deepseek
 
     // ---------------------- EXERCISE 11
     // Create a function that takes a list of integers and a lambda function, and returns
@@ -88,6 +107,6 @@ object Part2ConditionalLogic {
     //      val result = applyLambda(numbers) { it * 2 }
     //      Should return: [2, 4, 6, 8, 10]
     fun applyLambda(numbers: List<Int>, lambda: (Int) -> Int): List<Int> {
-        return listOf()
+        return numbers.map { lambda(it) }
     }
 }
